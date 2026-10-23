@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Find boarding rooms, annexes and shared accommodation across Sri Lanka.">
+<title>Find My Boarding | Find your place</title>
+<style>
+:root{--navy:#102b46;--blue:#1769aa;--mint:#dff6ec;--green:#167c5a;--ink:#183047;--muted:#667789;--line:#e4eaf0;--paper:#f6f9fc;--white:#fff;--radius:18px}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink)}button,input,select{font:inherit}button{cursor:pointer}
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}.nav{max-width:1180px;margin:auto;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:10px;font-weight:850;font-size:1.25rem;letter-spacing:-.5px;color:var(--navy);text-decoration:none}.logo{width:39px;height:39px;background:var(--blue);border-radius:13px;display:grid;place-items:center;color:#fff;font-size:21px}.navlinks{display:flex;align-items:center;gap:24px}.navlinks a{color:var(--ink);text-decoration:none;font-weight:650;font-size:.94rem}.navlinks a:hover{color:var(--blue)}.post-btn,.primary{background:var(--blue);color:#fff;border:0;border-radius:12px;padding:12px 17px;font-weight:750}.post-btn:hover,.primary:hover{background:#10578f}
+.hero{background:linear-gradient(125deg,#102b46 0%,#174f78 64%,#167c72 100%);color:white;padding:65px 22px 76px;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:390px;height:390px;border:1px solid #ffffff22;border-radius:50%;right:-70px;top:-130px;box-shadow:0 0 0 45px #ffffff09,0 0 0 90px #ffffff07;pointer-events:none}.hero-inner{max-width:1080px;margin:auto;position:relative;z-index:1}.eyebrow{font-size:.8rem;text-transform:uppercase;letter-spacing:2px;font-weight:800;color:#a8f0d0}.hero h1{font-size:clamp(2.2rem,5vw,4.25rem);letter-spacing:-2px;line-height:1.05;margin:15px 0}.hero p{color:#dceaf4;font-size:1.08rem;max-width:600px;line-height:1.65;margin-bottom:28px}.searchbox{background:#fff;padding:13px;border-radius:19px;display:grid;grid-template-columns:1.5fr 1fr 1fr auto;gap:10px;box-shadow:0 18px 45px #081e3440;max-width:1000px}.field{display:flex;flex-direction:column;gap:5px;padding:4px 10px}.field label{font-size:.73rem;font-weight:800;color:#687b8c}.field input,.field select{width:100%;border:0;outline:0;color:var(--ink);background:transparent;padding:4px 0;min-width:0}.searchbox .primary{align-self:stretch;padding:0 24px}
+.trust{display:flex;gap:22px;flex-wrap:wrap;color:#e2f3f7;font-size:.86rem;margin-top:18px}.trust span:before{content:"✓";color:#8cf0c7;font-weight:900;margin-right:7px}
+main{max-width:1180px;margin:auto;padding:38px 22px 60px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:22px}.section-head h2{margin:0 0 7px;font-size:1.75rem;letter-spacing:-.7px;color:var(--navy)}.section-head p{margin:0;color:var(--muted)}.sort{border:1px solid var(--line);border-radius:10px;padding:10px;background:white;color:var(--ink)}
+.notice{background:#fff8e7;border:1px solid #f2dfa8;color:#76541b;padding:12px 15px;border-radius:12px;font-size:.88rem;line-height:1.5;margin-bottom:20px}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.card{background:white;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:transform .18s,box-shadow .18s}.card:hover{transform:translateY(-3px);box-shadow:0 14px 28px #17395512}.photo{height:190px;background:linear-gradient(135deg,#d7e7ee,#a9c9d4);display:grid;place-items:center;position:relative;overflow:hidden}.photo svg{width:100%;height:100%;display:block}.badge{position:absolute;top:13px;left:13px;background:#fff;color:var(--green);border-radius:30px;padding:6px 10px;font-size:.74rem;font-weight:800}.card-body{padding:17px}.price{font-weight:850;font-size:1.35rem;color:var(--navy)}.price small{font-size:.78rem;font-weight:600;color:var(--muted)}.card h3{margin:9px 0 6px;font-size:1.08rem}.location{font-size:.87rem;color:var(--muted);margin:0 0 13px}.tags{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:17px}.tag{background:#f0f5f8;color:#52697b;border-radius:7px;padding:6px 8px;font-size:.75rem;font-weight:650}.card-foot{display:flex;gap:8px}.card-foot button{flex:1;padding:10px 9px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--blue);font-weight:750}.card-foot .contact{background:#e7f8ef;border-color:#d1efdf;color:#14734d}.empty{grid-column:1/-1;text-align:center;padding:45px 20px;background:white;border:1px dashed #cbd8e3;border-radius:16px;color:var(--muted)}
+.locations{margin-top:54px}.location-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-top:19px}.location-tile{background:#fff;border:1px solid var(--line);border-radius:14px;padding:17px;text-align:left;color:var(--ink);font-weight:800}.location-tile span{display:block;font-size:.82rem;font-weight:500;color:var(--muted);margin-top:5px}.location-tile:hover{border-color:#7fb8de;background:#f8fcff}
+.cta{margin-top:54px;background:var(--mint);border-radius:22px;padding:30px;display:flex;align-items:center;justify-content:space-between;gap:20px}.cta h2{margin:0 0 8px;color:#12543f}.cta p{margin:0;color:#3e6b5b;line-height:1.5}.cta button{white-space:nowrap;background:var(--green)}
+footer{background:#102b46;color:#d4e0e9;padding:32px 22px}.footer-inner{max-width:1180px;margin:auto;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer-inner strong{color:white}.footer-inner small{display:block;margin-top:8px;color:#b7c7d4}.footer-links{display:flex;gap:18px;align-items:center}.footer-links a{color:#d4e0e9;text-decoration:none;font-size:.88rem}
+dialog{border:0;border-radius:18px;padding:0;width:min(560px,calc(100% - 28px));box-shadow:0 25px 80px #071d33aa}dialog::backdrop{background:#0a2038a8}.modal-head{padding:22px 24px;background:#f1f7fb;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.modal-head h2{margin:0;color:var(--navy)}.close{border:0;background:transparent;font-size:1.5rem;color:var(--muted)}.form{padding:22px 24px;display:grid;grid-template-columns:1fr 1fr;gap:14px}.form label{font-size:.83rem;font-weight:750;color:#526579;display:flex;flex-direction:column;gap:7px}.form input,.form select,.form textarea{width:100%;border:1px solid #d9e2ea;border-radius:9px;padding:11px;background:#fff;color:var(--ink)}.form .full{grid-column:1/-1}.form .primary{margin-top:4px}.form-note{font-size:.8rem;color:var(--muted);line-height:1.5;margin:0}
+@media(max-width:850px){.searchbox{grid-template-columns:1fr 1fr}.searchbox .primary{min-height:48px}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.location-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.nav{padding:12px 16px}.navlinks{gap:10px}.navlinks a{display:none}.post-btn{padding:10px 12px;font-size:.83rem}.hero{padding:48px 16px 55px}.hero h1{letter-spacing:-1px}.hero p{font-size:.98rem}.searchbox{grid-template-columns:1fr;gap:5px;padding:12px}.field{border-bottom:1px solid #edf1f5;padding:8px}.searchbox .primary{padding:14px}.trust{gap:10px;font-size:.78rem}main{padding:30px 16px 45px}.section-head{align-items:start;flex-direction:column}.cards{grid-template-columns:1fr}.photo{height:210px}.location-grid{gap:9px}.location-tile{padding:13px;font-size:.9rem}.cta{padding:23px;align-items:start;flex-direction:column}.form{grid-template-columns:1fr;padding:18px}.form .full{grid-column:auto}.footer-inner{flex-direction:column}}
+</style>
+</head>
+<body>
+<header>
+  <nav class="nav" aria-label="Main navigation">
+    <a class="brand" href="#" aria-label="Find My Boarding home"><span class="logo">⌂</span><span>Find My <span style="color:#1769aa">Boarding</span></span></a>
+    <div class="navlinks"><a href="#listings">Find a room</a><a href="#locations">Locations</a><button class="post-btn" id="openPost">＋ Post a boarding</button></div>
+  </nav>
+</header>
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Your next place starts here</div>
+    <h1>Find a place<br>to call home.</h1>
+    <p>Discover boarding rooms, annexes and shared accommodation across Sri Lanka. Search by location and budget, then contact the owner directly.</p>
+    <form class="searchbox" id="searchForm">
+      <div class="field"><label for="location">WHERE DO YOU WANT TO STAY?</label><input id="location" placeholder="Town or district (e.g. Gampaha)"></div>
+      <div class="field"><label for="roomType">ROOM TYPE</label><select id="roomType"><option value="">Any room type</option><option>Single room</option><option>Shared room</option><option>Annex</option><option>House</option></select></div>
+      <div class="field"><label for="maxPrice">MAX MONTHLY RENT (LKR)</label><select id="maxPrice"><option value="">Any budget</option><option value="10000">Up to Rs. 10,000</option><option value="20000">Up to Rs. 20,000</option><option value="30000">Up to Rs. 30,000</option><option value="50000">Up to Rs. 50,000</option></select></div>
+      <button class="primary" type="submit">Search rooms →</button>
+    </form>
+    <div class="trust"><span>Search across Sri Lanka</span><span>Contact owners directly</span><span>Listings reviewed before publishing</span></div>
+  </div>
+</section>
+<main>
+  <section id="listings">
+    <div class="section-head"><div><h2>Explore boarding places</h2><p id="resultCount">A few example listings to demonstrate the website.</p></div><select class="sort" id="sort"><option value="recommended">Sort: Recommended</option><option value="low">Price: Low to high</option><option value="high">Price: High to low</option></select></div>
+    <div class="notice"><strong>Prototype notice:</strong> The properties below are fictional sample listings for design testing. They are not real available rooms. Do not contact or pay anyone based on these examples.</div>
+    <div class="cards" id="cards"></div>
+  </section>
+  <section class="locations" id="locations"><div class="section-head"><div><h2>Popular locations</h2><p>Choose an area to explore example listings.</p></div></div>
+    <div class="location-grid">
+      <button class="location-tile" data-location="Colombo">Colombo<span>Western Province</span></button>
+      <button class="location-tile" data-location="Gampaha">Gampaha<span>Western Province</span></button>
+      <button class="location-tile" data-location="Negombo">Negombo<span>Western Province</span></button>
+      <button class="location-tile" data-location="Kandy">Kandy<span>Central Province</span></button>
+      <button class="location-tile" data-location="Moratuwa">Moratuwa<span>Western Province</span></button>
+      <button class="location-tile" data-location="Kurunegala">Kurunegala<span>North Western Province</span></button>
+      <button class="location-tile" data-location="Matara">Matara<span>Southern Province</span></button>
+      <button class="location-tile" data-location="Jaffna">Jaffna<span>Northern Province</span></button>
+    </div>
+  </section>
+  <section class="cta"><div><h2>Have a room to rent?</h2><p>Reach people looking for their next boarding place.<br>Submit your details for review by the site administrator.</p></div><button class="primary" id="openPost2">Post your property →</button></section>
+</main>
+<footer><div class="footer-inner"><div><strong>Find My Boarding</strong><small>Find Your Place. Feel at Home.</small><small>Independent accommodation-finding platform for Sri Lanka.</small></div><div class="footer-links"><a href="#listings">Find a room</a><a href="#locations">Locations</a><a href="#" id="privacyLink">Privacy</a><a href="#" id="contactLink">Contact</a></div></div></footer>
+<dialog id="postDialog">
+  <div class="modal-head"><h2>Submit a boarding</h2><button class="close" id="closePost" aria-label="Close form">×</button></div>
+  <form class="form" id="postForm">
+    <label>Property title<input name="title" required placeholder="e.g. Furnished single room"></label>
+    <label>Monthly rent (LKR)<input name="price" type="number" min="1" required placeholder="e.g. 18000"></label>
+    <label>Town<input name="town" required placeholder="e.g. Negombo"></label>
+    <label>Room type<select name="type" required><option value="">Choose one</option><option>Single room</option><option>Shared room</option><option>Annex</option><option>House</option></select></label>
+    <label>Owner name<input name="owner" required placeholder="Your name"></label>
+    <label>Contact number<input name="phone" type="tel" required placeholder="e.g. 07X XXX XXXX"></label>
+    <label class="full">Facilities / details<textarea name="details" rows="3" placeholder="Wi-Fi, water, nearby transport..."></textarea></label>
+    <p class="form-note full">Demo only: this form does not send or save your submission yet. We'll connect a secure database and administrator approval workflow in a later step. Please don't enter real personal information into this prototype.</p>
+    <button class="primary full" type="submit">Preview submission</button>
+  </form>
+</dialog>
+<script>
+const samples = [
+ {title:"Bright single room near town",town:"Negombo",district:"Gampaha",price:15000,type:"Single room",tags:["Furnished","Wi-Fi nearby"],art:1},
+ {title:"Shared room for students",town:"Kandy",district:"Kandy",price:9000,type:"Shared room",tags:["Student friendly","Water included"],art:2},
+ {title:"Compact annex with private entrance",town:"Gampaha",district:"Gampaha",price:28000,type:"Annex",tags:["Private entrance","Kitchen"],art:3},
+ {title:"Furnished room close to transport",town:"Colombo",district:"Colombo",price:22000,type:"Single room",tags:["Furnished","Bus route nearby"],art:4},
+ {title:"Family annex with small kitchen",town:"Moratuwa",district:"Colombo",price:42000,type:"Annex",tags:["Kitchen","Separate entrance"],art:5},
+ {title:"Budget shared accommodation",town:"Kurunegala",district:"Kurunegala",price:8000,type:"Shared room",tags:["Budget friendly","Utilities nearby"],art:6}
+];
+const art = {
+1:'<rect width="600" height="300" fill="#d7e8ef"/><rect y="190" width="600" height="110" fill="#b5c8b6"/><rect x="90" y="38" width="420" height="220" rx="8" fill="#f6f1e8"/><rect x="125" y="65" width="150" height="105" fill="#8db8c7"/><path d="M200 65v105M125 118h150" stroke="#f6f1e8" stroke-width="8"/><rect x="320" y="72" width="120" height="186" fill="#d9b99b"/><rect x="337" y="88" width="86" height="170" fill="#ad8a6c"/><rect x="65" y="205" width="480" height="28" rx="6" fill="#9a795c"/>',
+2:'<rect width="600" height="300" fill="#e7e0d5"/><rect y="210" width="600" height="90" fill="#c7b49d"/><rect x="60" y="40" width="210" height="120" fill="#8dbac5"/><path d="M165 40v120M60 100h210" stroke="#f7f2e8" stroke-width="8"/><rect x="315" y="48" width="230" height="190" rx="10" fill="#c2a58a"/><rect x="340" y="68" width="180" height="110" rx="8" fill="#f4ede1"/><rect x="360" y="190" width="140" height="48" rx="6" fill="#7f9a91"/>',
+3:'<rect width="600" height="300" fill="#dce9df"/><rect y="220" width="600" height="80" fill="#b4c8b5"/><rect x="70" y="60" width="460" height="195" fill="#f6f0e4"/><path d="M45 70L300 15 555 70" fill="#8c9e91"/><rect x="105" y="100" width="145" height="95" fill="#8cb7c4"/><rect x="125" y="120" width="105" height="75" fill="#b7d6dc"/><rect x="320" y="92" width="145" height="163" fill="#bca18a"/><rect x="345" y="115" width="95" height="140" fill="#8c7563"/>',
+4:'<rect width="600" height="300" fill="#e2edf2"/><rect y="210" width="600" height="90" fill="#d3d9d3"/><rect x="45" y="35" width="510" height="210" fill="#f9f7f1"/><rect x="75" y="60" width="190" height="125" fill="#86b3c4"/><path d="M170 60v125M75 122h190" stroke="#f9f7f1" stroke-width="8"/><rect x="310" y="65" width="205" height="180" fill="#d5c1a8"/><rect x="330" y="88" width="165" height="130" fill="#eee5d8"/><rect x="350" y="105" width="125" height="85" fill="#a6c5c8"/>',
+5:'<rect width="600" height="300" fill="#e4e9dc"/><rect y="220" width="600" height="80" fill="#bdcbb0"/><rect x="65" y="75" width="470" height="180" fill="#f4eee3"/><path d="M40 80L300 20 560 80" fill="#8fa293"/><rect x="95" y="105" width="150" height="95" fill="#8db8c7"/><rect x="285" y="110" width="205" height="145" fill="#d7bda2"/><rect x="310" y="130" width="155" height="125" fill="#a78e76"/>',
+6:'<rect width="600" height="300" fill="#e8e0d4"/><rect y="215" width="600" height="85" fill="#c6b39c"/><rect x="80" y="45" width="440" height="210" fill="#f6f1e9"/><rect x="110" y="70" width="160" height="105" fill="#8bb6c4"/><path d="M190 70v105M110 123h160" stroke="#f6f1e9" stroke-width="8"/><rect x="315" y="65" width="165" height="190" fill="#d2b79a"/><rect x="340" y="90" width="115" height="165" fill="#9d836c"/>'
+};
+const svg = n => `<svg viewBox="0 0 600 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustration of a room">${art[n]}</svg>`;
+const cards = document.getElementById('cards');
+function render(list){
+  cards.innerHTML='';
+  document.getElementById('resultCount').textContent = `${list.length} example ${list.length===1?'listing':'listings'} shown.`;
+  if(!list.length){cards.innerHTML='<div class="empty"><h3>No matching examples found</h3><p>Try another town, room type, or budget.</p></div>';return}
+  list.forEach(x=>{
+    const el=document.createElement('article');el.className='card';
+    el.innerHTML=`<div class="photo">${svg(x.art)}<span class="badge">Example listing</span></div><div class="card-body"><div class="price">Rs. ${x.price.toLocaleString('en-LK')} <small>/ month</small></div><h3>${x.title}</h3><p class="location">⌖ ${x.town}, ${x.district} District</p><div class="tags"><span class="tag">${x.type}</span>${x.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div><div class="card-foot"><button type="button" class="details">View details</button><button type="button" class="contact">Contact owner</button></div></div>`;
+    el.querySelector('.details').addEventListener('click',()=>alert('This is a fictional sample listing. Real property details will be available after we connect the database.'));
+    el.querySelector('.contact').addEventListener('click',()=>alert('Contact details are not available for sample listings. Never send money before verifying a property and owner.'));
+    cards.appendChild(el);
+  });
+}
+function applySearch(){
+ const loc=document.getElementById('location').value.trim().toLowerCase();
+ const type=document.getElementById('roomType').value;
+ const max=Number(document.getElementById('maxPrice').value)||Infinity;
+ let result=samples.filter(x=>(!loc||x.town.toLowerCase().includes(loc)||x.district.toLowerCase().includes(loc))&&(!type||x.type===type)&&x.price<=max);
+ const sort=document.getElementById('sort').value;
+ if(sort==='low')result.sort((a,b)=>a.price-b.price);
+ if(sort==='high')result.sort((a,b)=>b.price-a.price);
+ render(result);
+}
+document.getElementById('searchForm').addEventListener('submit',e=>{e.preventDefault();applySearch();document.getElementById('listings').scrollIntoView({behavior:'smooth'})});
+document.getElementById('sort').addEventListener('change',applySearch);
+document.querySelectorAll('.location-tile').forEach(b=>b.addEventListener('click',()=>{document.getElementById('location').value=b.dataset.location;applySearch();document.getElementById('listings').scrollIntoView({behavior:'smooth'})}));
+const dlg=document.getElementById('postDialog');
+document.getElementById('openPost').onclick=()=>dlg.showModal();
+document.getElementById('openPost2').onclick=()=>dlg.showModal();
+document.getElementById('closePost').onclick=()=>dlg.close();
+document.getElementById('postForm').addEventListener('submit',e=>{e.preventDefault();alert('Demo complete! This form does not send or save information yet. Next we will connect a database and secure approval process.');dlg.close();e.target.reset()});
+document.getElementById('privacyLink').onclick=e=>{e.preventDefault();alert('A full privacy policy will be added before public launch and before applying for advertising.');};
+document.getElementById('contactLink').onclick=e=>{e.preventDefault();alert('A real contact page will be added before launch.');};
+render(samples);
+</script>
+</body>
+</html>
